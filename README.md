@@ -32,8 +32,6 @@ It needs a MS5611, BME680 and CCS811 sensor.
 * Configure Wi-Fi or Ethernet under "Example Connection Configuration" menu. Type here your SSID and your password.
 * Go then to "Example Configuration" and type your MQTT broker URL.
 * When using Make build system, set `Default serial port` under `Serial flasher config`.
-* In the same ESP-IDF terminal type: (`idf.py -p COMx flash monitor`) to execute this project.
-* Only enjoy it ;-) !!
 
 ### Build and Flash
 
@@ -45,4 +43,4 @@ idf.py -p PORT flash monitor
 
 (To exit the serial monitor, type ``Ctrl-]``.)
 
-See the Getting Started Guide for full steps to configure and use ESP-IDF to build projects.
+Only enjoy it ;-) !!
