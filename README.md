@@ -1,24 +1,39 @@
-# ESP-MQTT sample application
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+# Final Degree Project about Embedded Systems development with MCU ESP32
 
-This example connects to the broker URI selected using `idf.py menuconfig` (using mqtt tcp transport) and as a demonstration subscribes/unsubscribes and send a message on certain topic.
-(Please note that the public broker is maintained by the community so may not be always available, for details please see this [disclaimer](https://iot.eclipse.org/getting-started/#sandboxes))
+## Note from the Author
 
-Note: If the URI equals `FROM_STDIN` then the broker address is read from stdin upon application startup (used for testing)
+Hi everyone!!
 
-It uses ESP-MQTT library which implements mqtt client to connect to mqtt broker.
+This is my Final Degree Project of Electronic Industry and Automatic Engineering at University of Almería (Spain).
+
+This project is based on MQTT and TCP/IP connection to a online server, reading and sending several sensors' data like temperature, pressure or humidity...
+
+This sensor are: MS5611, BME680, CCS811 and CCS811.
+
+You can see the project of each sensor in my Github profile!
+
+Name:		Francisco Martín Villegas
+
+Year:		2021-2022
+
+Email:		f.martinvillegas00@gmail.com
 
 ## How to use example
 
 ### Hardware Required
 
-This example can be executed on any ESP32 board, the only required interface is WiFi and connection to internet.
+This project can be execute in every ESP32.
+
+It needs a MS5611, BME680 and CCS811 sensor.
 
 ### Configure the project
 
-* Open the project configuration menu (`idf.py menuconfig`)
-* Configure Wi-Fi or Ethernet under "Example Connection Configuration" menu. See "Establishing Wi-Fi or Ethernet Connection" section in [examples/protocols/README.md](../../README.md) for more details.
+* Open the project configuration menu (`idf.py menuconfig`) with ESP-IDF terminal.
+* Configure Wi-Fi or Ethernet under "Example Connection Configuration" menu. Type here your SSID and your password.
+* Go then to "Example Configuration" and type your MQTT broker URL.
 * When using Make build system, set `Default serial port` under `Serial flasher config`.
+* In the same ESP-IDF terminal type: (`idf.py -p COMx flash monitor`) to execute this project.
+* Only enjoy it ;-) !!
 
 ### Build and Flash
 
@@ -31,29 +46,3 @@ idf.py -p PORT flash monitor
 (To exit the serial monitor, type ``Ctrl-]``.)
 
 See the Getting Started Guide for full steps to configure and use ESP-IDF to build projects.
-
-## Example Output
-
-```
-I (3714) event: sta ip: 192.168.0.139, mask: 255.255.255.0, gw: 192.168.0.2
-I (3714) system_api: Base MAC address is not set, read default base MAC address from BLK0 of EFUSE
-I (3964) MQTT_CLIENT: Sending MQTT CONNECT message, type: 1, id: 0000
-I (4164) MQTT_EXAMPLE: MQTT_EVENT_CONNECTED
-I (4174) MQTT_EXAMPLE: sent publish successful, msg_id=41464
-I (4174) MQTT_EXAMPLE: sent subscribe successful, msg_id=17886
-I (4174) MQTT_EXAMPLE: sent subscribe successful, msg_id=42970
-I (4184) MQTT_EXAMPLE: sent unsubscribe successful, msg_id=50241
-I (4314) MQTT_EXAMPLE: MQTT_EVENT_PUBLISHED, msg_id=41464
-I (4484) MQTT_EXAMPLE: MQTT_EVENT_SUBSCRIBED, msg_id=17886
-I (4484) MQTT_EXAMPLE: sent publish successful, msg_id=0
-I (4684) MQTT_EXAMPLE: MQTT_EVENT_SUBSCRIBED, msg_id=42970
-I (4684) MQTT_EXAMPLE: sent publish successful, msg_id=0
-I (4884) MQTT_CLIENT: deliver_publish, message_length_read=19, message_length=19
-I (4884) MQTT_EXAMPLE: MQTT_EVENT_DATA
-TOPIC=/topic/qos0
-DATA=data
-I (5194) MQTT_CLIENT: deliver_publish, message_length_read=19, message_length=19
-I (5194) MQTT_EXAMPLE: MQTT_EVENT_DATA
-TOPIC=/topic/qos0
-DATA=data
-```
