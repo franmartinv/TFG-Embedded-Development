@@ -63,12 +63,12 @@ extern "C" {
 
 
 /**
- * Data writting in CCS811 (Define register and write data in it)
+ * @brief		Data writing in CCS811 (Define register and write data in it)
  *
- * [IN]:	- (uint8_t)		CCS811_register			:	command of the register where we want to write
- * [IN]:	- (uint8_t)		CCS811_register_value	:	value to introduce inside the register
+ * @param[in]	CCS811_register			:	(uint8_t)		command of the register where we want to write
+ * @param[in]	CCS811_register_value	:	(uint8_t)		value to introduce inside the register
  *
- * [OUT]:	- (esp_err_t)	ret						:	variable that indicates if there was a problem
+ * @param[out]	ret						:	(esp_err_t)		variable that indicates if there was a problem
  *
  */
 esp_err_t CCS811_write_register(uint8_t CCS811_register, uint8_t CCS811_register_value)
@@ -88,12 +88,13 @@ esp_err_t CCS811_write_register(uint8_t CCS811_register, uint8_t CCS811_register
 }
 
 
-/*
- * Data writting in CCS811 (only defines data register direction)
- *  [IN]:		- (uint8_t)		CCS811_register		:	command of the register where we want to write
- *  			- (unsigned)	size				: 	number of bytes that you whant to write
+/**
+ * 	@brief		Data writing in CCS811 (only defines data register direction)
  *
- *  [OUT]:		- (uint8_t)		ret					:	variable that indicates if there was a problem
+ *  @param[in]		CCS811_register		:	(uint8_t)		command of the register where we want to write
+ *  @param[in]	 	size				: 	(unsigned)		number of bytes that you whant to write
+ *
+ *  @param[out]		ret					:	(uint8_t)		variable that indicates if there was a problem
  *
  */
 esp_err_t CCS811_write_byte(uint8_t CCS811_register, unsigned size)
@@ -113,10 +114,11 @@ esp_err_t CCS811_write_byte(uint8_t CCS811_register, unsigned size)
 
 
 /**
- * Function for write multiple bytes in a register
- * [IN]:		- (uint8_t) 	CCS811_register		:	register addres where we want to write
- * 				- (uint8_t) 	buffer_in			:	buffer that we whant to write
- * 				- (unsigned)	size				:	number of bytes that we whant to write
+ * @brief		Function for write multiple bytes in a register
+ *
+ * @param[in]		CCS811_register		:	(uint8_t)		register addres where we want to write
+ * @param[in]		buffer_in			:	(uint8_t)		buffer that we whant to write
+ * @param[in]		size				:	(unsigned)		number of bytes that we whant to write
  *
  */
 esp_err_t CCS811_write_data_register(uint8_t CCS811_register, uint8_t *buffer_in, unsigned size)
@@ -137,11 +139,12 @@ esp_err_t CCS811_write_data_register(uint8_t CCS811_register, uint8_t *buffer_in
 }
 
 /**
- * Type 2 of data writting and reading in registers - reading of 1 byte
+ * @brief	Type 2 of data writting and reading in registers - reading of 1 byte
  *
- * [IN]:		- (uint8_t) *buffer_out			: pointer to buffer_out array where we save the read byte
- * 				- (uint8_t)  CCS811_register	: register where we want to operate
- * 				- (unsigned) size				: number of bytes that we are going to read
+ * @param[in]		*buffer_out			: (uint8_t)		pointer to buffer_out array where we save the read byte
+ * @param[in]		CCS811_register		: (uint8_t)		register where we want to operate
+ * @param[in]		size				: (unsigned)	number of bytes that we are going to read
+ *
  */
 esp_err_t CCS811_write_read_byte(uint8_t * buffer_out, uint8_t CCS811_register, unsigned size)
 {
@@ -163,11 +166,12 @@ esp_err_t CCS811_write_read_byte(uint8_t * buffer_out, uint8_t CCS811_register, 
 
 
 /**
- * Type 2.5 of writting and reading in registers - Reading of 1 byte
+ * @brief		Type 2.5 of writting and reading in registers - Reading of 1 byte
  *
- * [IN]:		- (uint16_t) *buffer_out		: pointer of the variable where we are going to save the data
- * 				- (uint8_t)  CCS811_register	: register where we want to operate
- * 				- (unsigned) size				: number of bytes that we are going to read
+ * @param[in]		*buffer_out			: (uint16_t)		pointer of the variable where we are going to save the data
+ * @param[in]		CCS811_register		: (uint8_t)			register where we want to operate
+ * @param[in]		size				: (unsigned)		number of bytes that we are going to read
+ *
  */
 esp_err_t CCS811_write_read_byte2(uint8_t *buffer_out, uint8_t CCS811_register, unsigned size)
 {
@@ -194,7 +198,7 @@ esp_err_t CCS811_write_read_byte2(uint8_t *buffer_out, uint8_t CCS811_register, 
 
 
 /**
- * Software reset of sensor for switch it to boot-mode
+ * @brief		Software reset of sensor for switch it to boot-mode
  *
  */
 esp_err_t CCS811_software_reset()
@@ -216,12 +220,12 @@ esp_err_t CCS811_software_reset()
 
 
 /**
- * Select operating mode of the CCS811.
- * 		First it reads the LSB, then it compares if the value introduced.
- * 		Because we need to stop the sensor for some time to use it correctly.
+ * @brief		Select operating mode of the CCS811.
+ * 				First it reads the LSB, then it compares if the value introduced.
+ * 				Because we need to stop the sensor for some time to use it correctly.
  *
- *	[IN]:	-	(uint8_t)	mode_number:	sensor operation mode number. It is indicated in CCS811.h
- *									It will work if it is equal to global values
+ * @param[in]	mode_number	:	(uint8_t)	sensor operation mode number. It is indicated in CCS811.h
+ *											It will work if it is equal to global values
  *
  */
 int CCS811_mode(uint8_t mode_number)
@@ -302,9 +306,9 @@ int CCS811_mode(uint8_t mode_number)
 }
 
 
-/*
- * Baseline configuration. It is automatically by the sensor, but only read and then write.
- * The value of the baseline is transparent for the engineer.
+/**
+ * @brief	Baseline configuration. It is automatically by the sensor, but only read and then write.
+ * 			The value of the baseline is transparent for the engineer.
  *
  */
 void CCS811_configuring_baseline()
@@ -343,9 +347,9 @@ void CCS811_configuring_baseline()
 
 
 /**
- * CCS811 slave initialition
+ * @brief		CCS811 slave initialition
  *
- * [IN]			-	(uint8_t)	mode_number	:	sensor operating mode (0,1,2,3,4)
+ * @param[in]	mode_number	:	(uint8_t)	sensor operating mode (0,1,2,3,4)
  *
  */
 int CCS811_init(uint8_t mode_number)
@@ -490,9 +494,9 @@ int CCS811_init(uint8_t mode_number)
 
 
 /**
- * Temperature and humidity compensation using BME680 temperature, pressure and humidity sensor
+ * @brief		Temperature and humidity compensation using BME680 temperature, pressure and humidity sensor
  *
- * [IN]:		- (BME680_calib_t)	*NVM_coef		:	pointer to BME680_calib_t which stores the BME680 calibration data
+ * @param[in]	*NVM_coef		:	(BME680_calib_t)	pointer to BME680_calib_t which stores the BME680 calibration data
  *
  */
 void CCS811_temperature_humidity_compensation(BME680_calib_t *NVM_coef, float *hum_comp, float *tempe_comp, float *press_comp)
@@ -531,15 +535,15 @@ void CCS811_temperature_humidity_compensation(BME680_calib_t *NVM_coef, float *h
 
 
 /**
- * CO2 and TVOC sensors read
+ * @brief		Read all variables: temperature, pressure, humidity, TVOC and eco2
  *
- * [IN]:		- (uint8_t) mode_number				:	Depending on the mode number, a delay time will be left for them to be sampled the data and the go to read it
- *				- (uint8_t) *eco2					:	pointer to variable eco2 that will contain the value of eco2 (carbon dioxide)
- *				- (uint8_t) *TVOC					:	pointer to TVOC variable that will contain the value of TVOC (particles in suspension)
- *				- (float)	*hum_comp				:	pointer to compensate humidity variable
- *				- (float)	*tempe_comp				:	pointer to compensate temperature variable
- *				- (float) 	*press_comp				:	pointer to compensate pressure variable
- *				- (BME680_calib_t)	*NVM_coef		:	pointer to BME680_calib_t which stores the BME680 calibration data
+ * @param[in]		mode_number		:	(uint8_t)	Depending on the mode number, a delay time will be left for them to be sampled the data and the go to read it
+ * @param[in]		*eco2			:	(uint8_t)	pointer to variable eco2 that will contain the value of eco2 (carbon dioxide)
+ * @param[in]		*TVOC			:	(uint8_t)	pointer to TVOC variable that will contain the value of TVOC (particles in suspension)
+ * @param[in]		*hum_comp		:	(float)		pointer to compensate humidity variable
+ * @param[in]		*tempe_comp		:	(float)		pointer to compensate temperature variable
+ * @param[in]		*press_comp		:	(float)		pointer to compensate pressure variable
+ * @param[in]		*NVM_coef		:	(BME680_calib_t)	pointer to BME680_calib_t which stores the BME680 calibration data
  *
  */
 
