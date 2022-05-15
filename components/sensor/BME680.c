@@ -8,7 +8,7 @@
 *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
 *			1. Master initialition with function "	hal_i2c_init();	".
-*			2. BME680 slave initialition with function "	CCS811_init(mode_number);	".
+*			2. BME680 slave initialition with function "	BME680_init(mode_number);	".
 *				2.1. Oversampling for all sensor is configured by default (in this driver) with x2 coefficient
 *			3. Create a "BME680_calib_t" struct, where we are going to safe the calibration coefficients
 *			4. Create some "float" variables for save the final temperature, humidity and pressure values

@@ -318,15 +318,15 @@ void app_main(void)
 
 	vTaskDelay(100/portTICK_RATE_MS);
 
-	//BME680_init(&NVM_coef);			// BME680 slave initialition
+	BME680_init(&NVM_coef);			// BME680 slave initialition
 
 	vTaskDelay(100/portTICK_RATE_MS);
 
-	//CCS811_init(mode_number);		// CCS811 slave initialition
+	CCS811_init(mode_number);		// CCS811 slave initialition
 
 	vTaskDelay(100/portTICK_RATE_MS);
 
-	//MS5611_init();					// MS5611 slave initialition
+	MS5611_init();					// MS5611 slave initialition
 
 	vTaskDelay(100/portTICK_RATE_MS);
 
@@ -390,25 +390,12 @@ void app_main(void)
     vTaskDelay(1000/portTICK_RATE_MS);
 
     while(1) {
-    	// Datos de prueba
-
-		eco2 = rand() % 60;
-		TVOC = rand() % 60;
-		hum_comp = rand() % 60;
-		BME680_t = rand() % 60;
-		BME680_p = rand() % 60;
-		MS5611_t = rand() % 60;
-		MS5611_p = rand() % 60;
-
-
-		// Fin datos de prueba
-
-    	//CCS811_read_all_variables(mode_number, &eco2, &TVOC, &hum_comp, &BME680_t, &BME680_p, &NVM_coef);
+    	CCS811_read_all_variables(mode_number, &eco2, &TVOC, &hum_comp, &BME680_t, &BME680_p, &NVM_coef);
 
     	vTaskDelay(100/portTICK_RATE_MS);
 
-    	//MS5611_t = MS5611_read_temperature();
-    	//MS5611_p = MS5611_read_pressure();
+    	MS5611_t = MS5611_read_temperature();
+    	MS5611_p = MS5611_read_pressure();
 
 		sprintf(mqtt_data, "%d", eco2);
 		topic = "sensor/CCS811/eco2";
