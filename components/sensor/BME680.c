@@ -3,7 +3,7 @@
 *	-------------------------------------------
 *
 *	***************************************************
-*	*		  		FAST USER GUIDE 		  	  	  *
+*	*		 FAST USER GUIDE 		  *
 *	***************************************************
 *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
@@ -214,30 +214,6 @@ esp_err_t BME680_calibration_data(BME680_calib_t *NVM_coef)
 
 	(NVM_coef -> range_sw_err) = ((int8_t)buffer_out[0] & (int8_t)0xF0) / 16;
 
-	//printf("%d\n", NVM_coef->BME680_par_T1);
-	//printf("%d\n", NVM_coef->BME680_par_T2);
-	//printf("%d\n", NVM_coef->BME680_par_T3);
-	//printf("%d\n", NVM_coef->BME680_par_P1);
-	//printf("%d\n", NVM_coef->BME680_par_P2);
-	//printf("%d\n", NVM_coef->BME680_par_P3);
-	//printf("%d\n", NVM_coef->BME680_par_P4);
-	//printf("%d\n", NVM_coef->BME680_par_P5);
-	//printf("%d\n", NVM_coef->BME680_par_P6);
-	//printf("%d\n", NVM_coef->BME680_par_P7);
-	//printf("%d\n", NVM_coef->BME680_par_P8);
-	//printf("%d\n", NVM_coef->BME680_par_P9);
-	//printf("%d\n", NVM_coef->BME680_par_P10);
-	//printf("%d\n", NVM_coef->BME680_par_H1);
-	//printf("%d\n", NVM_coef->BME680_par_H2);
-	//printf("%d\n", NVM_coef->BME680_par_H3);
-	//printf("%d\n", NVM_coef->BME680_par_H4);
-	//printf("%d\n", NVM_coef->BME680_par_H5);
-	//printf("%d\n", NVM_coef->BME680_par_H6);
-	//printf("%d\n", NVM_coef->BME680_par_H7);
-	//printf("%d\n", NVM_coef->BME680_par_gh1);
-	//printf("%d\n", NVM_coef->BME680_par_gh2);
-	//printf("%d\n", NVM_coef->BME680_par_gh3);
-
 	return ret;
 }
 
@@ -271,7 +247,7 @@ void BME680_settings(BME680_calib_t *NVM_coef)
 
 	ret = BME680_write_register(BME680_REG_IRR_filter, buffer_in);
 	if(ret != ESP_OK) {
-		printf("ERROR writting IRR filter: %x\n", ret);
+		printf("ERROR writing IRR filter: %x\n", ret);
 	}
 
 
@@ -354,7 +330,7 @@ int BME680_set_mode()
 			buffer_in = (buffer_out[0] & 0xFC) | BME680_set_sleep_mode;
 
 			ret = BME680_write_register(BME680_REG_CTRL_MEAS, buffer_in);
-			if(ret != ESP_OK) printf("ERROR writting sleep mode to ctrl-meas register: %x\n", ret);
+			if(ret != ESP_OK) printf("ERROR writing sleep mode to ctrl-meas register: %x\n", ret);
 
 			ret = BME680_read(buffer_out, BME680_REG_CTRL_MEAS, 1);
 			if(ret != ESP_OK) {
@@ -364,7 +340,7 @@ int BME680_set_mode()
 	} while(BME680_set_sleep_mode != (buffer_out[0] & 0x03));
 
 	ret = BME680_write_register(BME680_REG_CTRL_MEAS, buffer_in);
-	if(ret != ESP_OK) printf("ERROR writting new power mode to ctrl-meas register: %x\n", ret);
+	if(ret != ESP_OK) printf("ERROR writing new power mode to ctrl-meas register: %x\n", ret);
 	else printf("Setting sleep-mode OK!!\n");
 
 	return 0;
@@ -384,7 +360,7 @@ esp_err_t BME680_reset_function()
 
 	ret = BME680_write_register(BME680_REG_SOFT_RESET, BME680_RESET_VALUE);
 	if(ret != ESP_OK) {
-		printf("ERROR writting at RESET register: %x\n", ret);
+		printf("ERROR writing at RESET register: %x\n", ret);
 	}
 
 	ret = BME680_read(buffer_out, BME680_REG_SOFT_RESET, 1);
@@ -445,7 +421,7 @@ int BME680_init(BME680_calib_t *NVM_coef)
 		return -1;
 	}
 	else if(buffer_out[0] != 97) {
-		printf("ERROR writting hardware ID: %x - Error code: %x\n", buffer_out[0], ret);
+		printf("ERROR writing hardware ID: %x - Error code: %x\n", buffer_out[0], ret);
 		return -1;
 	}
 	else printf("Sensor hardware-ID is: %x\n", buffer_out[0]);
