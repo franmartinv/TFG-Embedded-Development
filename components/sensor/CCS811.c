@@ -1,9 +1,9 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	CCS811 sensor DRIVER writted in C
+*	CCS811 sensor DRIVER writed in C
 *	-------------------------------------------
 *
 *	***************************************************
-*	*		  		FAST USER GUIDE			  	  	  *
+*	*		 FAST USER GUIDE		  *
 *	***************************************************
 *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
@@ -139,7 +139,7 @@ esp_err_t CCS811_write_data_register(uint8_t CCS811_register, uint8_t *buffer_in
 }
 
 /**
- * @brief	Type 2 of data writting and reading in registers - reading of 1 byte
+ * @brief	Type 2 of data writing and reading in registers - reading of 1 byte
  *
  * @param[in]		*buffer_out			: (uint8_t)		pointer to buffer_out array where we save the read byte
  * @param[in]		CCS811_register		: (uint8_t)		register where we want to operate
@@ -166,7 +166,7 @@ esp_err_t CCS811_write_read_byte(uint8_t * buffer_out, uint8_t CCS811_register, 
 
 
 /**
- * @brief		Type 2.5 of writting and reading in registers - Reading of 1 byte
+ * @brief		Type 2.5 of writing and reading in registers - Reading of 1 byte
  *
  * @param[in]		*buffer_out			: (uint16_t)		pointer of the variable where we are going to save the data
  * @param[in]		CCS811_register		: (uint8_t)			register where we want to operate
@@ -341,7 +341,7 @@ void CCS811_configuring_baseline()
 	i2c_cmd_link_delete(i2c_cmd);
 
 	if(ret != ESP_OK) {
-		printf("ERROR writting baseline...\n");
+		printf("ERROR writing baseline...\n");
 	}
 }
 
@@ -426,7 +426,7 @@ int CCS811_init(uint8_t mode_number)
 
 		ret = CCS811_write_read_byte(&buffer_out, CCS811_REG_ERROR_ID, 1);
 		if(ret != ESP_OK) {
-			printf("ERROR writting the error register: %x\n",ret);
+			printf("ERROR writing the error register: %x\n",ret);
 		}
 		printf("ERROR code: %x",buffer_out);
 
