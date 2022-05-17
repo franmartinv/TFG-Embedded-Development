@@ -15,7 +15,8 @@ extern "C" {
 
 
 /**
- * Inicialización del master
+ * Master initialition
+ *
  */
 void hal_i2c_init()
 {
