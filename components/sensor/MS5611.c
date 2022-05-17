@@ -3,7 +3,7 @@
 *	-------------------------------------------
 *
 *	***************************************************
-*	*		  		FAST USER GUIDE			  	  	  *
+*	*		 FAST USER GUIDE		  *
 *	***************************************************
 *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
@@ -49,7 +49,7 @@ extern "C" {
 
 
 /**
- * @brief Data writting in MS5611
+ * @brief Data writing in MS5611
  *
  * @param[in]		MS5611_command			: (uint8_t)		command of the register where we want to write
  *
@@ -144,7 +144,7 @@ int MS5611_coef(uint16_t *C1, uint16_t *C2, uint16_t *C3, uint16_t *C4, uint16_t
 
 		ret = MS5611_write_byte(0xA2 + (2 * i));
 		if(ret != ESP_OK) {
-			printf("ERROR writting coefficient %d\n",i);
+			printf("ERROR writing coefficient %d\n",i);
 			return -1;
 		}
 
