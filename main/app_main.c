@@ -43,7 +43,7 @@ extern "C" {
 #define		YEAR_OFFSET			1900
 #define		MONTH_OFFSET			1
 
-static 	const char 		*TAG 		= 	"MQTT_EXAMPLE";
+static 	const char 		*TAG 		= 	"MQTT_TFG";
 static	int			GLOBAL_DELAY	=	MIN_DELAY;
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
