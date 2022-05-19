@@ -54,13 +54,13 @@ extern "C" {
 
 
 /**
- * @brief Data reading of BMP680
+ * @brief 		Data reading of BMP680
  *
- * @param[in]		* buffer_out	:	(uint8_t)	pointer to array buffer_out
- * @param[in]	  	BME680_command	:	(uint8_t)	command to where we want to read
+ * @param[in]		* buffer_out		:	(uint8_t)	pointer to array buffer_out
+ * @param[in]	  	BME680_command		:	(uint8_t)	command to where we want to read
  * @param[in]		size			:	(unsigned)	number of bytes that we need to read
  *
- * @param[out]		ret				:	(esp_err_t)	variable that indicates if there was a problem
+ * @param[out]		ret			:	(esp_err_t)	variable that indicates if there was a problem
  *
  */
 esp_err_t BME680_read(uint8_t * buffer_out, uint8_t BME680_command, unsigned size)
@@ -90,9 +90,9 @@ esp_err_t BME680_read(uint8_t * buffer_out, uint8_t BME680_command, unsigned siz
 
 
 /**
- * @brief 			Data writing in BME680
+ * @brief 		Data writing in BME680
  *
- * @param[in]		BME680_command	: 	(uint8_t)		command to where we want to write
+ * @param[in]		BME680_command			: 	(uint8_t)		command to where we want to write
  *
  * @param[out]		ret				:  	(esp_err_t)		variable that indicates if there was a problem
  *
@@ -114,12 +114,12 @@ esp_err_t BME680_write_command(uint8_t BME680_command)
 
 
 /**
- * @brief 			Data writing in BME680
+ * @brief 		Data writing in BME680
  *
  * @param[in]		BME680_register			: (uint8_t)		command to where we want to write
- * @param[in]		BME680_register_value	: (uint8_t) 	value that we want to write in the register called BME680_register
+ * @param[in]		BME680_register_value		: (uint8_t) 	value that we want to write in the register called BME680_register
  *
- * @param[out]		ret						: (esp_err_t)	variable that indicates if there was a problem
+ * @param[out]		ret				: (esp_err_t)	variable that indicates if there was a problem
  *
  */
 esp_err_t BME680_write_register(uint8_t BME680_register, uint8_t BME680_register_value)
@@ -140,11 +140,11 @@ esp_err_t BME680_write_register(uint8_t BME680_register, uint8_t BME680_register
 
 
 /**
- * @brief			Calibration coefficients reading
+ * @brief		Calibration coefficients reading
  *
  * @param[in]		* NVM_coef		: (BME680_calib_t)	pointer to struct that contains all of the calibration coefficients
  *
- * @param[out]		ret				: (esp_err_t) 		variable that indicates if there was a problem
+ * @param[out]		ret			: (esp_err_t) 		variable that indicates if there was a problem
  *
  */
 esp_err_t BME680_calibration_data(BME680_calib_t *NVM_coef)
@@ -219,7 +219,7 @@ esp_err_t BME680_calibration_data(BME680_calib_t *NVM_coef)
 
 
 /**
- * @brief			Set sensor settings
+ * @brief		Set sensor settings
  *
  * @param[in]		* NVM_coef		: (BME680_calib_t)	pointer to struct that contains all of the calibration coefficients
  *
@@ -348,7 +348,7 @@ int BME680_set_mode()
 
 
 /**
- * @brief			Reset sensor function
+ * @brief		Reset sensor function
  *
  * @param[out]		ret		: (esp_err_t)	variable that indicates if there was a problem resetting the hardware
  *
@@ -376,7 +376,7 @@ esp_err_t BME680_reset_function()
 
 
 /**
- * @brief			Slave initialition
+ * @brief		Slave initialition
  *
  * @param[in]		* NVM_coef		: (BME680_calib_t)	pointer to BME680_calib_t struct variable called NVM_coef
  *
@@ -459,12 +459,12 @@ int BME680_init(BME680_calib_t *NVM_coef)
 
 
 /**
- * @brief			Pressure data compensation
+ * @brief		Pressure data compensation
  *
  * @param[in]		pres_adc		: (uint32_t)		raw pressure data read from the ADC
  * @param[in]		* NVM_coef		: (BME680_calib_t)	pointer to struct that contains all of the calibration coefficients
  *
- * @param[out]		pressure_comp	: (uint32_t)		valor of the pressure when its compensate
+ * @param[out]		pressure_comp		: (uint32_t)		valor of the pressure when its compensate
  *
  */
 uint32_t BME680_pressure_compensation(uint32_t pres_adc , BME680_calib_t *NVM_coef)
@@ -496,7 +496,7 @@ uint32_t BME680_pressure_compensation(uint32_t pres_adc , BME680_calib_t *NVM_co
 
 
 /**
- * @brief			Temperature data compensation
+ * @brief		Temperature data compensation
  *
  * @param[in]		temp_adc		: (uint32_t)		raw temperature data read from the ADC
  * @param[in]		* NVM_coef		: (BME680_calib_t)	pointer to struct that contains all of the calibration coefficients
@@ -521,7 +521,7 @@ int16_t BME680_temperature_compensation(uint32_t temp_adc, BME680_calib_t *NVM_c
 
 
 /**
- * @brief			Humidity data compensation
+ * @brief		Humidity data compensation
  *
  * @param[in]		hum_adc			: (uint32_t)		raw humidity data read from the ADC
  * @param[in]		* NVM_coef		: (BME680_calib_t)	pointer to struct that contains all of the calibration coefficients
@@ -553,12 +553,12 @@ uint32_t BME680_humidity_compensation(uint16_t hum_adc, BME680_calib_t *NVM_coef
 
 
 /**
- * @brief			Getting sensor data and then doing the compensation
+ * @brief		Getting sensor data and then doing the compensation
  *
  * @param[in]		* press_comp		: (float)			pointer to valor of the pressure compensate
- * @param[in]		* hum_comp			: (float)			pointer to valor of the humidity compensate
+ * @param[in]		* hum_comp		: (float)			pointer to valor of the humidity compensate
  * @param[in]		* tempe_comp		: (float)			pointer to valor of the temperature compensate
- * @param[in]		* NVM_coef			: (BME680_calib_t)	pointer to struct that contains all of the calibration coefficients
+ * @param[in]		* NVM_coef		: (BME680_calib_t)		pointer to struct that contains all of the calibration coefficients
  *
  */
 int BME680_get_data(float *press_comp, float *hum_comp, float *tempe_comp, BME680_calib_t *NVM_coef)
