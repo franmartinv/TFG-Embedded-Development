@@ -1,20 +1,20 @@
 %% Script for read all data sensors and use it for see in graphics
 
 %% First we save the .csv sensors data in some new variables
-BME680_t        =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\BME680_Temperature.csv');
-BME680_p        =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\BME680_Pressure.csv');
-BME680_h        =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\BME680_Humidity.csv');
-CCS811_TVOC     =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\CCS811_TVOC.csv');
-CCS811_eco2     =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\CCS811_eco2.csv');
-MS5611_t        =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\MS5611_Temperature.csv');
-MS5611_p        =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\MS5611_Pressure.csv');
+BME680_t        =   readmatrix('C:\tfg-sensors-data\BME680_Temperature.csv');
+BME680_p        =   readmatrix('C:\tfg-sensors-data\BME680_Pressure.csv');
+BME680_h        =   readmatrix('C:\tfg-sensors-data\BME680_Humidity.csv');
+CCS811_TVOC     =   readmatrix('C:\tfg-sensors-data\CCS811_TVOC.csv');
+CCS811_eco2     =   readmatrix('C:\tfg-sensors-data\CCS811_eco2.csv');
+MS5611_t        =   readmatrix('C:\tfg-sensors-data\MS5611_Temperature.csv');
+MS5611_p        =   readmatrix('C:\tfg-sensors-data\MS5611_Pressure.csv');
 
-year            =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\Time\year.csv');
-month           =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\Time\month.csv');
-day             =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\Time\day.csv');
-hour            =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\Time\hour.csv');
-minute          =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\Time\minute.csv');
-second          =   readmatrix('C:\Users\fmart\Desktop\Datos sensores TFG\Time\second.csv');
+year            =   readmatrix('C:\tfg-sensors-data\Time\year.csv');
+month           =   readmatrix('C:\tfg-sensors-data\Time\month.csv');
+day             =   readmatrix('C:\tfg-sensors-data\Time\day.csv');
+hour            =   readmatrix('C:\tfg-sensors-data\Time\hour.csv');
+minute          =   readmatrix('C:\tfg-sensors-data\Time\minute.csv');
+second          =   readmatrix('C:\tfg-sensors-data\Time\second.csv');
 
 %% Cutting and comparing vectors length
 len(1)          =   length(BME680_h);
@@ -179,3 +179,4 @@ ylabel('CO2 concentration [ppm]')
 title('CO2 concentration in [ppm] by CCS811')
 %legend('eco2')
 grid
+
