@@ -3458,7 +3458,7 @@ LOAD c:/.espressif/tools/xtensa-esp32-elf/esp-2021r2-patch2-8.4.0/xtensa-esp32-e
  *fill*         0x000000004008081e        0x2 
  .text.bootloader_init
                 0x0000000040080820      0x2d8 esp-idf/bootloader_support/libbootloader_support.a(bootloader_esp32.c.obj)
-                                        0x32f (size before relaxing)
+                                        0x32b (size before relaxing)
                 0x0000000040080820                bootloader_init
  *fill*         0x0000000040080af8        0x0 
  .text.bootloader_clock_configure

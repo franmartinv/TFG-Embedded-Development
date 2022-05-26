@@ -3,7 +3,7 @@
 *	-------------------------------------------
 *
 *	***************************************************
-*	*		 FAST USER GUIDE		  *
+*	*		  		FAST USER GUIDE			  	  	  *
 *	***************************************************
 *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
@@ -49,11 +49,11 @@ extern "C" {
 
 
 /**
- * @brief 		Data writing in MS5611
+ * @brief Data writing in MS5611
  *
  * @param[in]		MS5611_command			: (uint8_t)		command of the register where we want to write
  *
- * @param[out]		ret				: (esp_err_t)		variable that indicates if there was a problem
+ * @param[out]		ret						: (esp_err_t)	variable that indicates if there was a problem
  *
  */
 esp_err_t MS5611_write_byte(uint8_t MS5611_command)
@@ -73,12 +73,12 @@ esp_err_t MS5611_write_byte(uint8_t MS5611_command)
 
 
 /**
- * @brief 		Data reading in MS5611
+ * @brief Data reading in MS5611
  *
  * @param[in]		seize			: 	(unsigned)		number of bytes that we are going to read
  * @param[in]		buffer_out		: 	(uint8_t)		array where I am going to save the data
  *
- * @param[out]		ret			:	(esp_err_t)		variable that indicates if there was a problem
+ * @param[out]		ret				:	(esp_err_t)		variable that indicates if there was a problem
  *
  */
 esp_err_t MS5611_read(uint8_t * buffer_out, unsigned size)
@@ -144,7 +144,7 @@ int MS5611_coef(uint16_t *C1, uint16_t *C2, uint16_t *C3, uint16_t *C4, uint16_t
 
 		ret = MS5611_write_byte(0xA2 + (2 * i));
 		if(ret != ESP_OK) {
-			printf("ERROR writing coefficient %d\n",i);
+			printf("ERROR writting coefficient %d\n",i);
 			return -1;
 		}
 
@@ -202,12 +202,12 @@ void MS5611_init()
 
 
 /**
- * @brief		Temperature reading
+ * @brief	Temperature reading
  *
  * @param[in]	 	coef[5]				:	(uint16_t)		calibration coefficients array
- * @param[in]		*t_no_compensate		:	(long)			pointer to raw temperature data from the sensor
+ * @param[in]		*t_no_compensate	:	(long)			pointer to raw temperature data from the sensor
  *
- * @param[out]		aux				:	(long)			temperature in Celsius*100
+ * @param[out]		aux					:	(long)			temperature in Celsius*100
  *
  */
 int32_t MS5611_temperature(uint16_t coef[5], uint32_t* t_no_compensate)
@@ -259,16 +259,16 @@ int32_t MS5611_temperature(uint16_t coef[5], uint32_t* t_no_compensate)
 }
 
 /**
- * @brief		Pressure calibration
+ * @brief	Pressure calibration
  *
- * @param[in]	 	temperature		:	(uint32_t)	raw temperature data directly from the sensor
- * @param[in] 		pressure		:	(long)		raw pressure data directly from the sensor
- * @param[in]	 	*C1			:	(uint16_t)	pointer to C1, Pressure sensitivity						| SENST1
- * @param[in]		*C2			:	(uint16_t)	pointer to C2, Pressure offset							| OFFT1
+ * @param[in]	 	temperature	:	(uint32_t)	raw temperature data directly from the sensor
+ * @param[in] 		pressure	:	(long)		raw pressure data directly from the sensor
+ * @param[in]	 	*C1			:	(uint16_t)	pointer to C1, Pressure sensitivity										| SENST1
+ * @param[in]		*C2			:	(uint16_t)	pointer to C2, Pressure offset											| OFFT1
  * @param[in]		*C3			:	(uint16_t)	pointer to C3, Temperature coefficient of pressure sensitivity			| TCS
- * @param[in]		*C4			:	(uint16_t)	pointer to C4, Temperature coefficient of pressure offset			| TCO
- * @param[in]		*C5			:	(uint16_t)	pointer to C5, Reference temperature						| TREF
- * @param[in]		*C6			:	(uint16_t)	pointer to C6, Temperature coefficient of the temperature 			| TEMPSENS
+ * @param[in]		*C4			:	(uint16_t)	pointer to C4, Temperature coefficient of pressure offset				| TCO
+ * @param[in]		*C5			:	(uint16_t)	pointer to C5, Reference temperature									| TREF
+ * @param[in]		*C6			:	(uint16_t)	pointer to C6, Temperature coefficient of the temperature 				| TEMPSENS
  *
  * @param[out]	 	p			:	(uint32_t)	final pressure valor in mBar
  *
@@ -287,16 +287,16 @@ int32_t press_calibrate(uint32_t temperature, int32_t pressure, uint16_t C1, uin
 }
 
 /**
- * @brief		Pressure calibration for 15 <= Temperature < 20
+ * @brief	Pressure calibration for 15 <= Temperature < 20
  *
- * @param[in]	  	temperature		:	(uint32_t)	raw temperature data directly from the sensor
- * @param[in]		pressure		:	(long)		raw pressure data directly from the sensor
-  * @param[in]	 	*C1			:	(uint16_t)	pointer to C1, Pressure sensitivity						| SENST1
- * @param[in]		*C2			:	(uint16_t)	pointer to C2, Pressure offset							| OFFT1
+ * @param[in]	  	temperature	:	(uint32_t)	raw temperature data directly from the sensor
+ * @param[in]		pressure	:	(long)		raw pressure data directly from the sensor
+ * @param[in]	 	*C1			:	(uint16_t)	pointer to C1, Pressure sensitivity										| SENST1
+ * @param[in]		*C2			:	(uint16_t)	pointer to C2, Pressure offset											| OFFT1
  * @param[in]		*C3			:	(uint16_t)	pointer to C3, Temperature coefficient of pressure sensitivity			| TCS
- * @param[in]		*C4			:	(uint16_t)	pointer to C4, Temperature coefficient of pressure offset			| TCO
- * @param[in]		*C5			:	(uint16_t)	pointer to C5, Reference temperature						| TREF
- * @param[in]		*C6			:	(uint16_t)	pointer to C6, Temperature coefficient of the temperature 			| TEMPSENS
+ * @param[in]		*C4			:	(uint16_t)	pointer to C4, Temperature coefficient of pressure offset				| TCO
+ * @param[in]		*C5			:	(uint16_t)	pointer to C5, Reference temperature									| TREF
+ * @param[in]		*C6			:	(uint16_t)	pointer to C6, Temperature coefficient of the temperature 				| TEMPSENS
  *
  * @param[out]	 	p			:	(uint32_t)	final pressure valor in mBar
  *
@@ -320,16 +320,16 @@ int32_t press_calibrate_2(uint32_t temperature, int32_t pressure, uint16_t C1, u
 }
 
 /**
- * @brief		Pressure calibration for Temperature < 15
+ * @brief	Pressure calibration for Temperature < 15
  *
- * @param[in]	 	temperature		:	(uint32_t)	raw temperature data directly from the sensor
- * @param[in]		pressure		:	(long)		raw pressure data directly from the sensor
-  * @param[in]	 	*C1			:	(uint16_t)	pointer to C1, Pressure sensitivity						| SENST1
- * @param[in]		*C2			:	(uint16_t)	pointer to C2, Pressure offset							| OFFT1
+ * @param[in]	 	temperature	:	(uint32_t)	raw temperature data directly from the sensor
+ * @param[in]		pressure	:	(long)		raw pressure data directly from the sensor
+ * @param[in]	 	*C1			:	(uint16_t)	pointer to C1, Pressure sensitivity										| SENST1
+ * @param[in]		*C2			:	(uint16_t)	pointer to C2, Pressure offset											| OFFT1
  * @param[in]		*C3			:	(uint16_t)	pointer to C3, Temperature coefficient of pressure sensitivity			| TCS
- * @param[in]		*C4			:	(uint16_t)	pointer to C4, Temperature coefficient of pressure offset			| TCO
- * @param[in]		*C5			:	(uint16_t)	pointer to C5, Reference temperature						| TREF
- * @param[in]		*C6			:	(uint16_t)	pointer to C6, Temperature coefficient of the temperature 			| TEMPSENS
+ * @param[in]		*C4			:	(uint16_t)	pointer to C4, Temperature coefficient of pressure offset				| TCO
+ * @param[in]		*C5			:	(uint16_t)	pointer to C5, Reference temperature									| TREF
+ * @param[in]		*C6			:	(uint16_t)	pointer to C6, Temperature coefficient of the temperature 				| TEMPSENS
  *
  * @param[out]	 	p			:	(uint32_t)	final pressure valor in mBar
  *
@@ -362,7 +362,7 @@ int32_t press_calibrate_3(uint32_t temperature, int32_t pressure, uint16_t C1, u
  * 				*	press_calibrate3	->	temperatura	<	15 Celsius
  *
  * @param[in]	  	coef[5]			:	(uint16_t)		calibration coefficients array
- * @param[in]	  	t_no_compensate		:	(uint32_t)		raw temperature data directly from the sensor
+ * @param[in]	  	t_no_compensate	:	(uint32_t)		raw temperature data directly from the sensor
  *
  * @param[out]		pressure		:	(long)			final compensate pressure
  *
@@ -476,7 +476,7 @@ float MS5611_read_temperature()
 /**
  * @brief		Final pressure valor function
  *
- * @param[out]		aux	:	(float)		pressure reading in [mBar]
+ * @param[out]	aux	:	(float)		pressure reading in [mBar]
  *
  */
 float MS5611_read_pressure()
