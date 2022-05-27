@@ -12,9 +12,9 @@
 * 		able to treat them using a script in MATLAB to generate a well-ordered Excel document and be able to graph the solutions obtained.
 *
 *
-* 		Francisco Martín Villegas
+* 		Francisco MartÃ­n Villegas
 * 		Electronic Industry and Automatic Engineering
-* 		University of Almería, 2022
+* 		University of AlmerÃ­a, 2022
 *
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -66,7 +66,7 @@ extern "C" {
 #define		MONTH_OFFSET		1
 
 static 	const char 		*TAG 			= 		"MQTT_TFG";
-static	int				GLOBAL_DELAY	=		1800000;		// 30 minutes in this moment
+static	int				GLOBAL_DELAY	=		1200000;		// 30 minutes in this moment
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
