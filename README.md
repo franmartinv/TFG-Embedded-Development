@@ -8,7 +8,9 @@ This is my Final Degree Project of Electronic Industry and Automatic Engineering
 
 This project is based on MQTT and TCP/IP connection to a online server, reading and sending several sensors' data like temperature, pressure or humidity...
 
-This sensor are: MS5611, BME680, CCS811 and CCS811.
+These sensors are: MS5611, BME680, and CCS811.
+
+I have programmed a ESP32-CAM too!! You can see the C main project code in my profile!
 
 You can see the project of each sensor in my Github profile!
 
