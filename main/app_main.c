@@ -57,25 +57,25 @@
 extern "C" {
 #endif
 
-#define		number_samples		5
+#define		number_samples			5
 #define		MAX_DELAY			3600000		// 3600000 	milliseconds = 3600 seconds = 1 hour
 #define		MIN_DELAY			5000		// 5000		milliseconds = 5	seconds
 #define		DELAY_SIZE			20
-#define		TIMEZONE			2			// timezone-zone for spain: UTC +2
+#define		TIMEZONE			2		// timezone-zone for spain: UTC +2
 #define		YEAR_OFFSET			1900
-#define		MONTH_OFFSET		1
+#define		MONTH_OFFSET			1
 
-static 	const char 		*TAG 			= 		"MQTT_TFG";
+static 	const char 			*TAG 		= 		"MQTT_TFG";
 static	int				GLOBAL_DELAY	=		1200000;		// 30 minutes in this moment
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-void 			hal_i2c_init();
+void 		hal_i2c_init();
 static void 	log_error_if_nonzero(const char *message, int error_code);
 static void 	mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data);
-void 			initialize_sntp();
-void 			obtain_time();
-void 			send_mqtt_time_data(esp_mqtt_client_handle_t client, int sec, int min, int hour, int day, int month, int year);
+void 		initialize_sntp();
+void 		obtain_time();
+void 		send_mqtt_time_data(esp_mqtt_client_handle_t client, int sec, int min, int hour, int day, int month, int year);
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -100,7 +100,7 @@ static void log_error_if_nonzero(const char *message, int error_code)
  */
 static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
-	int				i;
+	int			i;
 	char			read_topic[50], read_data[50];
 	esp_err_t		ret;
 
@@ -303,11 +303,11 @@ void app_main(void)
 {
 	wifi_ap_record_t			ap_info;
 	BME680_calib_t				NVM_coef;
-	uint16_t					mode_number, eco2, TVOC;
-	float						hum_comp, BME680_t, BME680_p, MS5611_t, MS5611_p;
-	esp_err_t					ret;
-	char						*topic;
-	char						mqtt_data[100], strftime_buf[64];
+	uint16_t				mode_number, eco2, TVOC;
+	float					hum_comp, BME680_t, BME680_p, MS5611_t, MS5611_p;
+	esp_err_t				ret;
+	char					*topic;
+	char					mqtt_data[100], strftime_buf[64];
 
     ESP_LOGI(TAG, "[APP] Startup..");
     ESP_LOGI(TAG, "[APP] Free memory: %d bytes", esp_get_free_heap_size());
@@ -327,7 +327,7 @@ void app_main(void)
 
 	mode_number 	= 	1;
 
-	hal_i2c_init();					// Master initialition
+	hal_i2c_init();				// Master initialition
 
 	vTaskDelay(100/portTICK_RATE_MS);
 
@@ -339,7 +339,7 @@ void app_main(void)
 
 	vTaskDelay(100/portTICK_RATE_MS);
 
-	MS5611_init();					// MS5611 slave initialition
+	MS5611_init();				// MS5611 slave initialition
 
 	vTaskDelay(100/portTICK_RATE_MS);
 
@@ -351,7 +351,7 @@ void app_main(void)
      */
     ESP_ERROR_CHECK(example_connect());
 
-    // SNTP configuring
+    	// SNTP configuring
 
 		time_t now;
 		struct tm timeinfo;
@@ -359,7 +359,7 @@ void app_main(void)
 		localtime_r(&now, &timeinfo);
 
 		sntp_servermode_dhcp(1);	// Set 1 if you want to request that the servers to be used for SNTP should be requested from the DHCP. Set 0 to not
-		initialize_sntp();			// Function to initialize sntp and obtain online time data from server
+		initialize_sntp();		// Function to initialize sntp and obtain online time data from server
 
 	// end SNTP configuring
 
