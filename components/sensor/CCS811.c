@@ -437,7 +437,7 @@ int CCS811_init(uint8_t mode_number)
 	vTaskDelay(100/portTICK_RATE_MS);
 
 	// Initialize firmware mode, where we can load programs and data inside the sensor
-	ret = CCS811_write_byte(CCS811_REG_APP_START, 1);
+	ret = CCS811_write_byte(CCS811_REG_APP_START, 1);	// Writing 0xF4 == CCS811_REG_APP_START, we change boot-mode to firmware-mode!!
 	if(ret != ESP_OK) {
 		printf("ERROR switching to firmware mode: %x\n",ret);
 
@@ -450,11 +450,11 @@ int CCS811_init(uint8_t mode_number)
 		return -1;
 	}
 	else {
-		// Checking the status register again to see if the firmware-mode has been started correctly (Bit 7 register STATUS == 1)
-		CCS811_write_read_byte(&buffer_out, CCS811_REG_STATUS, 1);
+		// Checking the status register again to see if the firmware-mode has been started correctly (now Bit 7 register STATUS == 1)
+		CCS811_write_read_byte(&buffer_out, CCS811_REG_STATUS, 1);	
 
 		if(((buffer_out >> 4) & 0x01) == 1) {
-			printf("Bit FW_MODE == 1, we can load !!\n");
+			printf("Bit APP_VALID == 1, we can load !!\n");
 		}
 		else {
 			printf("We are not in firmware mode...\n");
