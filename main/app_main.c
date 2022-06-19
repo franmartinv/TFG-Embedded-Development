@@ -473,7 +473,7 @@ void app_main(void)
 		obtain_time();
 		time(&now);
 
-		setenv("TZ", "EST-2CEST,M6.3.0/2,M12.3.0", 1);
+		setenv("TZ", "CET-1CEST,M3.5.0,M10.5.0/3", 1); // https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
 		tzset();
 		localtime_r(&now, &timeinfo);
 		strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
