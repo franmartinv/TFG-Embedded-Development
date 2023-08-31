@@ -14,8 +14,6 @@ I have programmed a ESP32-CAM too!! You can see the C main project code in my pr
 
 You can see the project of each sensor in my Github profile!
 
-Name:		Francisco Martín Villegas
-
 Year:		2021-2022
 
 Email:		f.martinvillegas00@gmail.com
