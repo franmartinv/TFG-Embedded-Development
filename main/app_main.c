@@ -12,7 +12,7 @@
 * 		able to treat them using a script in MATLAB to generate a well-ordered Excel document and be able to graph the solutions obtained.
 *
 *
-* 		Francisco Martín Villegas
+* 		
 * 		Electronic Industry and Automatic Engineering
 * 		University of Almería, 2022
 *
